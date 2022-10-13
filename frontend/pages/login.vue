@@ -1,76 +1,76 @@
 <template>
-
-
   <div class="wrapper fadeInDown" v-if="!$auth.loggedIn">
     <div id="formContent" class="bg-dark">
       <!-- Tabs Titles -->
-      <h2 class="active text-white mb-5">  LOGIN </h2>
-      
-  
+      <h2 class="active text-white mb-5">LOGIN</h2>
+
       <!-- Icon -->
-     
-   <!-- Login Form -->
-   <form @submit.prevent="login" ref="loginform">
-    <input  class="fadeIn second px-20 rounded"
-    name="email"
-    type="email"
-    required
-    autofocus
-    placeholder="Email"
-    
-     >
-     <br>
-     <br>
-    <input class="fadeIn third rounded"
-            type="password"
-            placeholder="Password"
-            name="password"
-            required
-            autocomplete="current-password"
-   
-    >
-    <br>
-    <br>
-    <input type="submit" class="btn-warning font-weight-bolder text-light" value="Log In">
-  
 
-    
-  </form>
-  
-  <!-- Remind Passowrd -->
-  <div id="formFooter">
-    <!-- <a class="font-weight-bolder text-light" href="#">Forgot Password?</a> -->
-    <span class="text-white" >Create an account?  </span><span class="inactive  font-weight-bolder"><NuxtLink to='/register' v-if="!$auth.loggedIn">Sign Up</NuxtLink></span>
+      <!-- Login Form -->
+      <form @submit.prevent="login" ref="loginform">
+        <input
+          class="fadeIn second px-20 rounded"
+          name="email"
+          type="email"
+          required
+          autofocus
+          placeholder="Email"
+        />
+        <br />
+        <br />
+        <input
+          class="fadeIn third rounded"
+          type="password"
+          placeholder="Password"
+          name="password"
+          required
+          autocomplete="current-password"
+        />
+        <br />
+        <br />
+        <input
+          type="submit"
+          class="btn-warning font-weight-bolder text-light"
+          value="Log In"
+        />
+      </form>
 
+      <!-- Remind Passowrd -->
+      <div id="formFooter">
+        <!-- <a class="font-weight-bolder text-light" href="#">Forgot Password?</a> -->
+        <span class="text-white">Create an account? </span
+        ><span class="inactive font-weight-bolder"
+          ><NuxtLink to="/register" v-if="!$auth.loggedIn"
+            >Sign Up</NuxtLink
+          ></span
+        >
+      </div>
+    </div>
   </div>
-
-</div>
-</div>
-
 </template>
 <script>
-	export default{
-		auth:'guest',
-		mounted(){
-			this.$axios.$get('/sanctum/csrf-cookie');
-		},
-		methods:{
-			async login(){
-				this.$nuxt.$loading.start();
-				try{
-					const formData = new FormData(this.$refs.loginform);
-					await this.$auth.loginWith('laravelSanctum',{data:formData});
-					console.log('user login');
-					this.$router.push({
-						path:'/',
-					});
-				}catch(err){
-					console.log(err);
-				}
-				this.$nuxt.$loading.finish();
-			}
-		}
-	}
+export default {
+  auth: "guest",
+  mounted() {
+    this.$axios.$get("/sanctum/csrf-cookie");
+  },
+  methods: {
+    async login() {
+      this.$nuxt.$loading.start();
+      try {
+        const formData = new FormData(this.$refs.loginform);
+        await this.$auth.loginWith("laravelSanctum", { data: formData });
+        console.log("user login");
+        this.$router.push({
+          path: "/",
+        });
+      } catch (err) {
+        console.log(err);
+      }
+      this.$nuxt.$loading.finish();
+    },
+  },
+};
 </script>
 <style scoped>
 html {
@@ -83,8 +83,8 @@ body {
 }
 
 a {
-  color:#fafa41;
-  display:inline-block;
+  color: #fafa41;
+  display: inline-block;
   text-decoration: none;
   font-weight: 400;
 }
@@ -94,8 +94,8 @@ h2 {
   font-size: 25px;
   font-weight: 600;
   text-transform: uppercase;
-  display:inline-block;
-  margin: 40px 8px 10px 8px; 
+  display: inline-block;
+  margin: 40px 8px 10px 8px;
   color: #cccccc;
 }
 /* STRUCTURE */
@@ -103,7 +103,7 @@ h2 {
 .wrapper {
   display: flex;
   align-items: center;
-  flex-direction: column; 
+  flex-direction: column;
   justify-content: center;
   width: 100%;
   min-height: 100%;
@@ -117,8 +117,8 @@ h2 {
   width: 90%;
   max-width: 450px;
   position: relative;
-  -webkit-box-shadow: 0 30px 60px 0 rgba(0,0,0,0.3);
-  box-shadow: 0 30px 60px 0 rgba(0,0,0,0.3);
+  -webkit-box-shadow: 0 30px 60px 0 rgba(0, 0, 0, 0.3);
+  box-shadow: 0 30px 60px 0 rgba(0, 0, 0, 0.3);
   text-align: center;
 }
 #formFooter {
@@ -140,7 +140,9 @@ h2.active {
 }
 /* FORM TYPOGRAPHY*/
 
-input[type=button], input[type=submit], input[type=reset]  {
+input[type="button"],
+input[type="submit"],
+input[type="reset"] {
   background-color: #ffc107;
   border: none;
   color: white;
@@ -150,8 +152,8 @@ input[type=button], input[type=submit], input[type=reset]  {
   display: inline-block;
   text-transform: uppercase;
   font-size: 18px;
-  -webkit-box-shadow: 0 10px 30px 0 rgba(95,186,233,0.4);
-  box-shadow: 0 10px 30px 0 rgba(95,186,233,0.4);
+  -webkit-box-shadow: 0 10px 30px 0 rgba(95, 186, 233, 0.4);
+  box-shadow: 0 10px 30px 0 rgba(95, 186, 233, 0.4);
   -webkit-border-radius: 5px 5px 5px 5px;
   border-radius: 5px 5px 5px 5px;
   margin: 5px 20px 40px 20px;
@@ -162,11 +164,15 @@ input[type=button], input[type=submit], input[type=reset]  {
   transition: all 0.3s ease-in-out;
 }
 
-input[type=button]:hover, input[type=submit]:hover, input[type=reset]:hover  {
+input[type="button"]:hover,
+input[type="submit"]:hover,
+input[type="reset"]:hover {
   background-color: #9bec55;
 }
 
-input[type=button]:active, input[type=submit]:active, input[type=reset]:active  {
+input[type="button"]:active,
+input[type="submit"]:active,
+input[type="reset"]:active {
   -moz-transform: scale(0.95);
   -webkit-transform: scale(0.95);
   -o-transform: scale(0.95);
@@ -174,7 +180,7 @@ input[type=button]:active, input[type=submit]:active, input[type=reset]:active  
   transform: scale(0.95);
 }
 
-input[type=text] {
+input[type="text"] {
   background-color: #f6f6f6;
   color: #0d0d0d;
   padding: 15px 32px;
@@ -194,16 +200,14 @@ input[type=text] {
   border-radius: 5px 5px 5px 5px;
 }
 
-input[type=text]:focus {
+input[type="text"]:focus {
   background-color: #fff;
   border-bottom: 2px solid #5fbae9;
 }
 
-input[type=text]:placeholder {
+input[type="text"]:placeholder {
   color: #cccccc;
 }
-
-
 
 /* ANIMATIONS */
 
@@ -244,23 +248,44 @@ input[type=text]:placeholder {
 }
 
 /* Simple CSS3 Fade-in Animation */
-@-webkit-keyframes fadeIn { from { opacity:0; } to { opacity:1; } }
-@-moz-keyframes fadeIn { from { opacity:0; } to { opacity:1; } }
-@keyframes fadeIn { from { opacity:0; } to { opacity:1; } }
+@-webkit-keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@-moz-keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
 
 .fadeIn {
-  opacity:0;
-  -webkit-animation:fadeIn ease-in 1;
-  -moz-animation:fadeIn ease-in 1;
-  animation:fadeIn ease-in 1;
+  opacity: 0;
+  -webkit-animation: fadeIn ease-in 1;
+  -moz-animation: fadeIn ease-in 1;
+  animation: fadeIn ease-in 1;
 
-  -webkit-animation-fill-mode:forwards;
-  -moz-animation-fill-mode:forwards;
-  animation-fill-mode:forwards;
+  -webkit-animation-fill-mode: forwards;
+  -moz-animation-fill-mode: forwards;
+  animation-fill-mode: forwards;
 
-  -webkit-animation-duration:1s;
-  -moz-animation-duration:1s;
-  animation-duration:1s;
+  -webkit-animation-duration: 1s;
+  -moz-animation-duration: 1s;
+  animation-duration: 1s;
 }
 
 .fadeIn.first {
@@ -303,20 +328,18 @@ input[type=text]:placeholder {
   color: #0d0d0d;
 }
 
-.underlineHover:hover:after{
+.underlineHover:hover:after {
   width: 100%;
 }
-
-
 
 /* OTHERS */
 
 *:focus {
-    outline: none;
-} 
+  outline: none;
+}
 
 #icon {
-  width:60%;
+  width: 60%;
 }
 
 * {

@@ -17,11 +17,11 @@ class DatabaseSeeder extends Seeder
 
         $this->call(IqTestSeeder::class);
         User::create([
-            'name'=>'eitone',
-            'email'=>'eitone@gmail.com',
-            'phonenumber'=>'09796272472',
-            'age'=>22,
-            'password'=>bcrypt('password')
+            'name' => 'eitone',
+            'email' => 'eitone@gmail.com',
+            'phonenumber' => '09796272472',
+            'age' => 22,
+            'password' => bcrypt('password')
         ]);
 
 

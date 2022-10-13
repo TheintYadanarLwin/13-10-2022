@@ -6,7 +6,7 @@ use App\Contracts\Services\IqTestServiceInterface;
 use Illuminate\Http\Request;
 
 class IqTestController extends Controller
-{     
+{
     /**
      * Interface
      */
@@ -33,7 +33,7 @@ class IqTestController extends Controller
 
         return response()->json([
             'iq_tests' => $data['iq_tests'],
-            'records'=> $data['records']
+            'records' => $data['records']
         ], 200);
     }
 

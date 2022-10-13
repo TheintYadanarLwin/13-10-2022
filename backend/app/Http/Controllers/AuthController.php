@@ -9,13 +9,15 @@ use App\Models\User;
 
 class AuthController extends Controller
 {
-    public function login(Request $request){
-        if(!Auth::attempt($request->only('email','password'))){
+    public function login(Request $request)
+    {
+        if (!Auth::attempt($request->only('email', 'password'))) {
             throw new AuthenticationException();
         }
     }
 
-    public function register (Request $request){
+    public function register(Request $request)
+    {
         // validate request 
         $user = new User;
         $user->name = $request->name;
@@ -27,11 +29,10 @@ class AuthController extends Controller
         $user->save();
     }
 
-    public function logout(Request $request){
+    public function logout(Request $request)
+    {
         Auth::logout();
         $request->session()->invalidate();
         $request->session()->regenerateToken();
     }
-    
-    
 }

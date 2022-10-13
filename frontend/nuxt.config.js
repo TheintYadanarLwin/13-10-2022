@@ -18,7 +18,7 @@ export default {
 
   // Global CSS: https://go.nuxtjs.dev/config-css
   //css: ['@/assets/css/style.css'],
-  css:[],
+  css: [],
   loading: {
     color: 'orange',
     height: '5px'
@@ -42,16 +42,16 @@ export default {
     // https://go.nuxtjs.dev/axios
     '@nuxtjs/axios',
     '@nuxtjs/auth-next'
- 
+
   ],
   auth: {
     strategies: {
       laravelSanctum: {
         provider: 'laravel/sanctum',
         url: 'http://localhost:8000',
-        endpoints:{
-          login:{
-            url:'/login'
+        endpoints: {
+          login: {
+            url: '/login'
           }
         }
       },
@@ -63,11 +63,11 @@ export default {
     // Workaround to avoid enforcing hard-coded localhost:3000: https://github.com/nuxt-community/axios-module/issues/308
     baseURL: process.env.BASE_URL || 'http://localhost:8000',
     browserBaseURL: process.env.LARAVEL_ENDPOINT,
-    credentials:true
-   
+    credentials: true
+
   },
-  router:{
-    middleware:['auth']
+  router: {
+    middleware: ['auth']
   },
 
 

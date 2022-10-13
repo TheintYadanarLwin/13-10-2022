@@ -1,14 +1,13 @@
 
 <template>
   <b-container fluid class="p-5">
-    
     <button class="btn btn-success next-btn">
-            <NuxtLink to="/" class="next-route text-white" >Back</NuxtLink>
-          </button>
+      <NuxtLink to="/" class="next-route text-white">Back</NuxtLink>
+    </button>
 
-          <h2 class="active text-warning mb-3 text-center fadeIn first">
-        {{$auth.user.name}} Score DashsBoard
-      </h2>
+    <h2 class="active text-warning mb-3 text-center fadeIn first">
+      {{ $auth.user.name }} Score DashsBoard
+    </h2>
     <b-row class="mt-3">
       <b-col>
         <b-table striped hover :items="data" :fields="fields">
@@ -31,7 +30,6 @@
 <script>
 import moment from "moment";
 export default {
-
   async asyncData({ $axios, store }) {
     try {
       const data = await $axios.$get(`/api/v1/iq_test`);
@@ -50,7 +48,7 @@ export default {
       let items = data.records.map((record, index) => {
         return {
           id: record.id,
-          name:"t",
+          name: "t",
           "no.": index + 1,
           date: moment(record.created_at).format("DD-MM-YYYY"),
           correct_answers: record.details_answer.filter(
@@ -60,7 +58,7 @@ export default {
       });
       return {
         data: items,
-        fields: ["no.","name","date", "correct_answers", "details"],
+        fields: ["no.", "name", "date", "correct_answers", "details"],
       };
     } catch (error) {
       console.log(error);

@@ -1,9 +1,11 @@
 <template>
   <div class="container">
     <div v-if="$auth.loggedIn" class="wrapper fadeInDown">
-      <h2 class="text-warning mb-3 text-center fadeIn first"> Welcome {{$auth.user.name}}!</h2>
+      <h2 class="text-warning mb-3 text-center fadeIn first">
+        Welcome {{ $auth.user.name }}!
+      </h2>
       <h5 class="text-gold mb-3 text-center fadeIn first">
-      Let's Take A Few Minutes...
+        Let's Take A Few Minutes...
       </h5>
       <div>
         <img
@@ -60,7 +62,7 @@ export default {
       let items = data.records.map((record, index) => {
         return {
           id: record.id,
-          "name":$auth.user.name,
+          name: $auth.user.name,
           "no.": index + 1,
           date: moment(record.created_at).format("DD-MM-YYYY"),
           correct_answers: record.details_answer.filter(
@@ -70,7 +72,7 @@ export default {
       });
       return {
         data: items,
-        fields: ["no.","name","date", "correct_answers", "details"],
+        fields: ["no.", "name", "date", "correct_answers", "details"],
       };
     } catch (error) {
       console.log(error);

@@ -22,8 +22,8 @@ class IqTestDao implements IqTestDaoInterface
         $iq_tests = IqTest::getTree();
         $records = Record::all();
 
-        foreach($records as $key=>$value){
-            $records[$key]['details_answer'] = DB::table('iq_tests')->whereIn('id',explode(',',$value['answer']))->get();
+        foreach ($records as $key => $value) {
+            $records[$key]['details_answer'] = DB::table('iq_tests')->whereIn('id', explode(',', $value['answer']))->get();
         }
 
         return ['iq_tests' => $iq_tests, 'records' => $records];
@@ -43,7 +43,4 @@ class IqTestDao implements IqTestDaoInterface
         $ans->save();
         return $ans;
     }
-    
-       
-    
 }

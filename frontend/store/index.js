@@ -3,7 +3,7 @@ import Vue from "vue";
 export const state = () => ({
   answers: [],
   languages: [],
-  records:[],
+  records: [],
 });
 
 export const mutations = {

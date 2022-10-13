@@ -18,9 +18,9 @@ class CreateIqTestsTableMigration extends Migration
                 ->references('id')
                 ->on('iq_tests')
                 ->onDelete('set null');
-                $table->string('title');
-                $table->integer('status')->nullable();
-                $table->timestamps();
+            $table->string('title');
+            $table->integer('status')->nullable();
+            $table->timestamps();
         });
 
         Schema::create('iq_test_closure', function (Blueprint $table) {
@@ -39,7 +39,6 @@ class CreateIqTestsTableMigration extends Migration
                 ->references('id')
                 ->on('iq_tests')
                 ->onDelete('cascade');
-
         });
     }
 
